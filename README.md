@@ -389,7 +389,28 @@ After updating and reloading the Sysmon configuration, the DLL injection activit
 <img width="1600" height="852" alt="Screenshot 2026-06-19 205853" src="https://github.com/user-attachments/assets/64c07386-6821-48be-9df2-6f082efdafe7" />
 
 ---
+## Incident Analysis
 
+### Indicators Observed
+
+* InjectProc.exe executed on the Windows endpoint
+* CreateRemoteThread activity detected against cmd.exe
+* Sysmon Event ID 8 generated
+* Wazuh custom rule 100200 triggered
+
+### MITRE ATT&CK Mapping
+
+* T1055.001 – DLL Injection
+
+### Analyst Assessment
+
+The alert indicates that InjectProc.exe performed DLL injection against a legitimate Windows process. Sysmon captured CreateRemoteThread activity, which was forwarded to Wazuh and matched by the custom detection rule.
+
+### Verdict
+
+Medium confidence process injection activity successfully detected through Sysmon telemetry and Wazuh correlation rules.
+
+---
 
 
 
@@ -471,4 +492,28 @@ After execution, Wazuh detected suspicious process behavior based on Sysmon logs
 
 ---
 
+## Key Takeaways
+
+* Successfully deployed Sysmon and Wazuh for endpoint monitoring
+* Developed custom Wazuh detection rules for process injection techniques
+* Generated and analyzed Sysmon Event ID 8 telemetry
+* Mapped detections to MITRE ATT&CK techniques T1055.001 and T1055.012
+* Reduced false positives through rule tuning
+
+---
+
+## Skills Demonstrated
+
+* Wazuh SIEM Administration
+* Sysmon Configuration
+* Windows Endpoint Monitoring
+* Detection Engineering
+* MITRE ATT&CK Mapping
+* Threat Hunting Fundamentals
+* SOC Analysis
+* Custom Rule Development
+* Windows Event Log Analysis
+* Security Telemetry Collection
+
+---
 
